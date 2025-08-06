@@ -14,7 +14,7 @@ def floop (lnum1:list[int],lnum2:list[int]):
                 y = lnum2[j]
             except :
                 print(f"lnum2[{j}] is out of range")
-            print(f"pick lnum1:{lnum1[i]} ,lnum2:{lnum2[j]}")
+            print(f"pick lnum1:{x} ,lnum2:{y}")
         if (lnum1[i] > lnum2[j] ) or lnum1[i] == lnum2[j]:
             print(f"in case 1")
             lnum1.insert(i,lnum2[j])
@@ -41,13 +41,11 @@ def floop (lnum1:list[int],lnum2:list[int]):
         print(f"{i},{j}:{lnum1}")
         i+=1
         print(f"{i} >= {len(lnum1)-1} and {j} > {len(lnum2)-1} : {(i >= len(lnum1)-1)} and {(j > len(lnum2)-1)}")
-        if (i >= len(lnum1)-1) and (j > len(lnum2)-1) :
-            break
-
         print("--------------------------------------------------")
-        
-        
-        
+        # fix break this here
+        if (i >= len(lnum1)-1) and (j >= len(lnum2)-1) :
+            break
+ 
 def median(lnum:list[int])->float:
     if len(lnum) %2 ==0:
         return (lnum[int(len(lnum)/2)-1] + lnum[int(len(lnum)/2)])/2
