@@ -48,7 +48,7 @@ def floop (lnum1:list[int],lnum2:list[int]):
         else :
             print(f"lnum1 is out of range")
 
- 
+#fix calculating is wrong 
 def median(lnum:list[int])->float:
     if len(lnum) %2 ==0:
         i = int(len(lnum)/2)-1
