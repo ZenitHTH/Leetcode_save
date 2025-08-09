@@ -48,8 +48,7 @@ def floop (lnum1:list[int],lnum2:list[int]):
         else :
             print(f"lnum1 is out of range")
 
-#fix calculating is wrong 
-def median(lnum:list[int])->float:
+def myMedian(lnum:list[int])->float:
     if len(lnum) %2 ==0:
         i = int(len(lnum)/2)-1
         j = int(len(lnum)/2)
@@ -67,30 +66,32 @@ def run (lnum1:list[int],lnum2:list[int]) :
     elif len(lnum1) < len(lnum2) :
         floop(lnum2,lnum1)
         print(lnum2)
+        return myMedian(lnum2)
     else : #len(lnum1) == len(lnum2)
         lnum1.insert(0,-1)
         floop(lnum1,lnum2)
         lnum1.remove(-1)
         print(lnum1)
     print("**********************************************")
-    return median(lnum1)
+    return myMedian(lnum1)
 
 
 import unittest
-from numpy import median
+import numpy
 class UnitTest(unittest.TestCase):
+
     def test1(self):
-        self.assertEqual(run([1,2],[3,4]),median([1,2,3,4]))
+        self.assertEqual(run([1,2],[3,4]),numpy.median([1,2,3,4]))
     
     def test2(self):
-        self.assertEqual(run([1,3],[2]),median([1,2,3]))
+        self.assertEqual(run([1,3],[2]),numpy.median([1,2,3]))
 
     def test3(self):
-        self.assertEqual(run([1,3,5,7,11],[1,2,3,4]),median([1,1,2,3,4,5,7,11]))
+        self.assertEqual(run([1,3,5,7,11],[1,2,3,4]),numpy.median([1,1,2,3,3,4,5,7,11]))
 
     def test4(self):
-        self.assertEqual(run([3],[1,2,4]),median([1,2,3,4]))
+        self.assertEqual(run([3],[1,2,4]),numpy.median([1,2,3,4]))
+    
 
 if __name__ == "__main__" :      
     unittest.main()
-    
