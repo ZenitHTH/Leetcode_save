@@ -18,13 +18,13 @@ impl Solution {
                     pos_right += 1;
                 }
             }else if s.chars().nth(pos_left) == s.chars().nth(pos) {
-
+                return s.chars().skip(pos_left).take(pos-pos_left).collect();
             }
             else if s.chars().nth(pos_right) == s.chars().nth(pos) {
-
+                return s.chars().skip(pos).take(pos-pos_right).collect();
             }
             else {
-                return s[pos_left..pos_right].to_string() ;
+                return s.chars().skip(pos_left).take(pos_right-pos_left).collect();
             }
         }
     }
