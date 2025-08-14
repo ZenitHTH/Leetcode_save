@@ -11,7 +11,7 @@ mod tests {
     #[test]
     fn palindrome_checker_test2(){
         let result = Solution::palindrome_checker(String::from("abcdcfg"));
-        assert_eq!(result,String::from("cdc"))
+        assert_eq!(result,String::from("cdc"));
     }
 
 
