@@ -1,0 +1,7 @@
+[package]
+name = "Longest_Palindromic_Substring"
+version = "0.1.0"
+edition = "2024"
+
+[dependencies]
+longest_palindrome = { path = "./longest_palindrome" } 
