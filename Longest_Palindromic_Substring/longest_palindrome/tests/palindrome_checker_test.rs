@@ -14,5 +14,17 @@ mod tests {
         assert_eq!(result,String::from("cdc"));
     }
 
+    #[test]
+    fn palindrome_checker_test3(){
+        let result:String = Solution::palindrome_checker(String::from("abcddef"));
+        assert_eq!(result,String::from("dd"))
+    }
+
+    #[test]
+    fn palindrome_checker_test4(){
+        let result:String = Solution::palindrome_checker(String::from("abccdef"));
+        assert_eq!(result,String::from("cc"));
+    }
+
 
 }
