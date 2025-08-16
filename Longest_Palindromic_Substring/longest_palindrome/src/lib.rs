@@ -10,21 +10,23 @@ impl Solution {
         let mut pos_right = pos + 1;
         loop {
             if s.chars().nth(pos_left) == s.chars().nth(pos_right) {
-                if pos_left > limit_left {
+                if pos_left > limit_left && pos_right < limit_right {
                     pos_left -= 1;
+                    pos_right += 1;
+                }else {
+                    return s.chars().skip(pos_left).take(pos_right-pos_left+1).collect();
                 }
 
-                if pos_right < limit_right {
-                    pos_right += 1;
-                }
             }else if s.chars().nth(pos_left) == s.chars().nth(pos) {
-                return s.chars().skip(pos_left).take(pos-pos_left).collect();
+                return s.chars().skip(pos_left).take(pos-pos_left+1).collect();
             }
             else if s.chars().nth(pos_right) == s.chars().nth(pos) {
-                return s.chars().skip(pos).take(pos-pos_right).collect();
+                return s.chars().skip(pos).take(pos-pos_right+1).collect();
             }
             else {
-                return s.chars().skip(pos_left).take(pos_right-pos_left).collect();
+                pos_left += 1;
+                pos_right -= 1;
+                return s.chars().skip(pos_left).take(pos_right-pos_left+1).collect();
             }
         }
     }
@@ -36,7 +38,7 @@ impl Solution {
         let pos_left = pos - 1;
         let pos_right = pos + 1;
         loop {
-
+            
             
         }
     }
