@@ -30,16 +30,26 @@ impl Solution {
         }
     }
 
-    pub fn longest_palindrome(s: String) {
-        let limit_left = 0;
-        let limit_right = s.len();
-        let pos = s.len()/2;
-        let pos_left = pos - 1;
-        let pos_right = pos + 1;
-        loop {
-            
+
+    pub fn longest_palindrome(s: String) -> ! {
+
+
+        let mut vec_palindrome:Vec<String> = Vec::new();
+
+        //First try
+        for pos in 1..s.len()-2 {
+            let res = self::Solution::palindrome_checker(s.clone(), pos);
+            if res.len() > 1 {
+                vec_palindrome.push(res);
+            }
             
         }
+        
+        for v in vec_palindrome {
+            println!("{}",v);
+        }
+        panic!("This function panics after printing the palindromes.");
+
     }
 }
 
