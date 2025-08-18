@@ -59,4 +59,11 @@ mod tests {
         assert_eq!(r,String::from("baab"))
     }
 
+    #[test]
+    fn longest_palindrome_test9(){
+        let s:String = String::from("abb");
+        let r:String = Solution::longest_palindrome(s);
+        assert_eq!(r,String::from("bb"));
+    }
+
 }
