@@ -31,25 +31,45 @@ impl Solution {
     }
 
 
-    pub fn longest_palindrome(s: String) -> ! {
+    pub fn longest_palindrome(s: String) -> String {
 
-
-        let mut vec_palindrome:Vec<String> = Vec::new();
-
-        //First try
-        for pos in 1..s.len()-2 {
-            let res = self::Solution::palindrome_checker(s.clone(), pos);
-            if res.len() > 1 {
-                vec_palindrome.push(res);
+        if s.len() > 2 {
+            let mut vec_palindrome:Vec<String> = Vec::new();
+            for pos in 1..s.len()-2 {
+                let res = self::Solution::palindrome_checker(s.clone(), pos);
+                if res.len() > 1 {
+                    vec_palindrome.push(res);
+                }
+                
             }
             
+            let mut longest:String = String::new();
+            for v in vec_palindrome {
+                if longest.len() < v.len() {
+                    longest = v;
+                }
+            }
+            return longest;
+        }else {
+            if s.len() <= 2 {
+                let pos = 0;
+                
+                if s.chars().nth(pos) == s.chars().nth(pos+1) {
+                    return s;
+                }else {
+                    match s.chars().nth(0) {
+                        None => {
+                            
+                        }
+                        Some(c)=>{
+                            return c.to_string();
+                        }
+                    }
+                }
+            
+            }
+            return s;
         }
-        
-        for v in vec_palindrome {
-            println!("{}",v);
-        }
-        panic!("This function panics after printing the palindromes.");
-
     }
 }
 
