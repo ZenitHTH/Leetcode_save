@@ -58,7 +58,7 @@ mod tests {
         assert_eq!(result,String::from("ccc"));
     }
 
-        #[test]
+    #[test]
     fn palindrome_checker_test8(){
         let s:String = String::from("aaaa");
         let pos:usize = s.len()/2;
