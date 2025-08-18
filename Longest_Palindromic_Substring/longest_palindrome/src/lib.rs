@@ -10,16 +10,23 @@ impl Solution {
         loop {
             if s.chars().nth(pos_left) == s.chars().nth(pos_right) {
                 if pos_left > limit_left && pos_right < limit_right {
-                    pos_left -= 1;
-                    pos_right += 1;
+                    if pos_left > limit_left {
+                        pos_left -= 1;
+                    }
+                    if pos_right < limit_right {
+                        pos_right += 1;
+                    }
+                    
                 }else {
                     return s.chars().skip(pos_left).take((pos_right-pos_left)+1).collect();
                 }
 
             }else if s.chars().nth(pos_left) == s.chars().nth(pos) {
+                //do it in case palindrome is even
                 return s.chars().skip(pos_left).take((pos-pos_left)+1).collect();
             }
             else if s.chars().nth(pos_right) == s.chars().nth(pos) {
+                //do it in case palindrome is even
                 return s.chars().skip(pos).take((pos_right-pos)+1).collect();
             }
             else {
@@ -41,8 +48,7 @@ impl Solution {
                     let res = self::Solution::palindrome_checker(s.clone(), pos);
                     if res.len() > 1 {
                         vec_palindrome.push(res);
-                    }
-                    
+                    }  
                 }
             }else {
                 // s.len() == 3
