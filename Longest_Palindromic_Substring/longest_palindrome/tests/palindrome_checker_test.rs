@@ -63,7 +63,7 @@ mod tests {
         let s:String = String::from("aaaa");
         let pos:usize = s.len()/2;
         let result:String = Solution::palindrome_checker(s, pos);
-        assert_eq!(result,String::from("aaa"));
+        assert_eq!(result,String::from("aaaa"));
     }
 
 
