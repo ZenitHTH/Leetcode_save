@@ -35,13 +35,19 @@ impl Solution {
 
         if s.len() > 2 {
             let mut vec_palindrome:Vec<String> = Vec::new();
-            for pos in 1..s.len()-2 {
-                let res = self::Solution::palindrome_checker(s.clone(), pos);
-                if res.len() > 1 {
-                    vec_palindrome.push(res);
+            
+            if s.len() > 3 {
+                for pos in 1..s.len()-2 {
+                    let res = self::Solution::palindrome_checker(s.clone(), pos);
+                    if res.len() > 1 {
+                        vec_palindrome.push(res);
+                    }
+                    
                 }
-                
-            }
+            }else {
+                // s.len() == 3
+                vec_palindrome.push(self::Solution::palindrome_checker(s, 1));
+            }   
             
             let mut longest:String = String::new();
             for v in vec_palindrome {
