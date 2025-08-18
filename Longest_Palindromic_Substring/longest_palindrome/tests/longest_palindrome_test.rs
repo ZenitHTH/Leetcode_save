@@ -44,4 +44,12 @@ mod tests {
         assert_eq!(r,String::from("ccc"));
     }
 
+
+    #[test]
+    fn longest_palindrome_test7(){
+        let s:String = String::from("aaaa");
+        let r:String = Solution::longest_palindrome(s);
+        assert_eq!(r,String::from("aaa"));
+    }
+
 }
