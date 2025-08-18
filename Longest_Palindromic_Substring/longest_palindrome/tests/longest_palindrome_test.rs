@@ -20,7 +20,7 @@ mod tests {
     fn longest_palindrome_test3(){
         let s:String = String::from("babad");
         let r:String = Solution::longest_palindrome(s);
-        assert_eq!(r,String::from("aba"));
+        assert_eq!(r,String::from("bab"));
     }
 
     #[test]
@@ -50,6 +50,13 @@ mod tests {
         let s:String = String::from("aaaa");
         let r:String = Solution::longest_palindrome(s);
         assert_eq!(r,String::from("aaaa"));
+    }
+
+    #[test]
+    fn longest_palindrome_test8(){
+        let s:String = String::from("acbaabed");
+        let r:String = Solution::longest_palindrome(s);
+        assert_eq!(r,String::from("baab"))
     }
 
 }
