@@ -83,8 +83,9 @@ impl Solution {
                 if v_str.get(pos_right) != v_str.get(pos){
                     pos_right -=1;
                 }
-                if v_str.get(pos_left) == v_str.get(pos_right){
-                    
+                if (v_str.get(pos_left-1) == v_str.get(pos_right+1)) && (v_str.get(pos) != v_str.get(pos_left-1)) {
+                    pos_left -=1;
+                    pos_right +=1;
                 }
                 return Solution::vec_get(pos_left, pos_right, v_str);
             }
@@ -132,7 +133,6 @@ impl Solution {
                     if s.len() > 1 {
                         vec_palindrome.push(res);
                     }
-                    
                 }
             }else {
                 // s.len() == 3
@@ -149,20 +149,17 @@ impl Solution {
         }else {
             if s.len() <= 2 {
                 let pos = 0;
-                
                 if s.chars().nth(pos) == s.chars().nth(pos+1) {
                     return s;
                 }else {
                     match s.chars().nth(0) {
                         None => {
-                            
                         }
                         Some(c)=>{
                             return c.to_string();
                         }
                     }
                 }
-            
             }
             return s;
         }
