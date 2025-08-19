@@ -66,4 +66,25 @@ mod tests {
         assert_eq!(r,String::from("bb"));
     }
 
+    #[test]
+    fn longest_palindrome_test10(){
+        let s:String = String::from("caba");
+        let r:String = Solution::longest_palindrome(s);
+        assert_eq!(r,String::from("aba"));
+    }
+
+    #[test]
+    fn longest_palindrome_test11(){
+        let s:String = String::from("xaabacxcabaaxcabaax");
+        let r:String = Solution::longest_palindrome(s);
+        assert_eq!(r,String::from("xaabacxcabaax"));
+    }
+
+    #[test]
+    fn longest_palindrome_test12(){
+        let s:String = String::from("abcda");
+        let r:String = Solution::longest_palindrome(s);
+        assert_eq!(r,String::from("a"));
+    }
+
 }
