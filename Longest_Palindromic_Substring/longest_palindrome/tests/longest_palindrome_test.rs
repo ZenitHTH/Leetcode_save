@@ -82,9 +82,9 @@ mod tests {
 
     #[test]
     fn longest_palindrome_test12(){
-        let s:String = String::from("abcda");
+        let s:String = String::from("caaaaa");
         let r:String = Solution::longest_palindrome(s);
-        assert_eq!(r,String::from("a"));
+        assert_eq!(r,String::from("aaaaa"));
     }
 
 }
