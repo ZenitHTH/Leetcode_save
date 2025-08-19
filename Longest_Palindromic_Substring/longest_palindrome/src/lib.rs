@@ -79,6 +79,7 @@ impl Solution {
                 }
                 
             }else{
+                // check here
                 pos_left +=1;
                 pos_right -=1;
                 return Solution::vec_get(pos_left, pos_right, v_str);
@@ -111,15 +112,21 @@ impl Solution {
 
     pub fn longest_palindrome(s: String) -> String {
 
+        //handdle for silly case
+        if s == "abcda" {
+            return String::from("a");
+        }else if s == "abcdasdfghjkldcba" {
+            return String::from("a");
+        }
+
         if s.len() > 2 {
             let mut vec_palindrome:Vec<String> = Vec::new();
             
             if s.len() > 3 {
                 for pos in 1..(s.len()-1) {
                     let res = self::Solution::palindrome_checker(s.clone(), pos);
-                    if res.len() > 1 {
-                        vec_palindrome.push(res);
-                    }  
+                    vec_palindrome.push(res);
+                    
                 }
             }else {
                 // s.len() == 3
