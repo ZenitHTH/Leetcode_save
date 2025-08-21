@@ -14,14 +14,14 @@ impl Solution {
         }
         if v_str.get(pos_left) == v_str.get(pos) {
                 if pos_left >= limit_left {
-                    return Solution::palindrome_checker_even(pos_left, pos, s);
+                    return Solution::palindrome_checker_even(pos_left, pos, v_str);
                 }else {
                     return Solution::vec_get(pos_left, pos, v_str);
                 }
                 
             } else if v_str.get(pos_right) == v_str.get(pos) {
                 if pos_right <= limit_right {
-                    return Solution::palindrome_checker_even(pos, pos_right, s);
+                    return Solution::palindrome_checker_even(pos, pos_right, v_str);
                 }else {
                     return Solution::vec_get(pos, pos_right, v_str);
                 }
@@ -64,22 +64,31 @@ impl Solution {
         let limit_left:usize = 0;
         let limit_right:usize = v_str.len() -1;
         loop {
-            if v_str.get(pos_left) == v_str.get(pos){
-                if pos_left > limit_left {
+
+            if (v_str.get(pos_left) == v_str.get(pos) && v_str.get(pos_right) == v_str.get(pos) ) || 
+            ((v_str.get(pos_left) == v_str.get(pos_right)) && (v_str.get(pos) != v_str.get(pos_left))) {
+                if pos_left > limit_left && pos_right < limit_right  {
                     pos_left -= 1;
-                }
-                
-            }
-            if v_str.get(pos_right) == v_str.get(pos){
-                if pos_right < limit_right {
                     pos_right += 1;
                 }
+                
             }
 
-            // out of range
-            if (v_str.get(pos_left) != v_str.get(pos) || v_str.get(pos_right) != v_str.get(pos)) || (pos_left == limit_left && pos_right == limit_right) {
+            if (v_str.get(pos_left) != v_str.get(pos_right)) 
+            && (v_str.get(pos_left+1) == v_str.get(pos_right))
+            && (v_str.get (pos_right) == v_str.get(pos) ) {
+                return Solution::palindrome_checker_even(pos_left+1, pos_right, v_str);
+            }else if(v_str.get(pos_left) != v_str.get(pos_right))
+            && (v_str.get(pos_left) == v_str.get(pos_right-1))
+            && (v_str.get(pos_left) == v_str.get(pos)){
+                return Solution::palindrome_checker_even(pos_left, pos_right-1, v_str);
+            }
+
+            // break end of palindrome
+            if (v_str.get(pos_left) != v_str.get(pos)) 
+            && (v_str.get(pos_right) != v_str.get(pos)) 
+            && (v_str.get(pos_left) != v_str.get(pos_right)) {
                 
-                // check here
                 if v_str.get(pos_left) != v_str.get(pos){
                     pos_left +=1;
                 }
@@ -87,23 +96,40 @@ impl Solution {
                     pos_right -=1;
                 }
                  
-                if pos_left > limit_left && pos_right < limit_right {
-                    if (v_str.get(pos_left-1) == v_str.get(pos_right+1)) && (v_str.get(pos) != v_str.get(pos_left-1)) {
-                        pos_left -=1;
-                        pos_right +=1;
-                    }
-                }
                 return Solution::vec_get(pos_left, pos_right, v_str);
+                
             }
+            
+
+
+            //break end of limit
+            if pos_left == limit_left && pos_right == limit_right {
+                return Solution::vec_get(limit_left, limit_right, v_str);
+            }else if pos_left == limit_left && pos_right < limit_right {
+                if v_str.get(limit_left) != v_str.get(pos_right+1){
+                    return Solution::vec_get(limit_left, pos_right, v_str);
+                }else if pos_right+1 == limit_right && v_str.get(limit_right) == v_str.get(pos_left){
+                        return Solution::vec_get(limit_left, limit_right, v_str)
+                    
+                }
+            }else if pos_left > limit_left && pos_right == limit_right {
+                if v_str.get(pos_left-1) != v_str.get(limit_right){
+                    return Solution::vec_get(pos_left, limit_right, v_str);
+                }else if pos_left-1 == limit_left && pos_right == limit_right {
+                    return  Solution::vec_get(limit_left, limit_right, v_str);
+                }
+            }
+
+
         }
     }
 
-    fn palindrome_checker_even(left:usize,right:usize,s:String)->String {
+    fn palindrome_checker_even(left:usize,right:usize,v_str:Vec<char>)->String {
         let mut pos_left: usize = left;
         let mut pos_right: usize = right;
         let limit_left:usize = 0;
-        let limit_right:usize= s.len()-1;
-        let v_str:Vec<char> = s.chars().collect();
+        let limit_right:usize= v_str.len()-1;
+        
         loop {
             if v_str.get(pos_left) == v_str.get(pos_right) {
                 if pos_left > limit_left && pos_right < limit_right {
