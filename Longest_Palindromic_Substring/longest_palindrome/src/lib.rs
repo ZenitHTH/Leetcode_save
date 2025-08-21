@@ -56,7 +56,7 @@ impl Solution {
             }
         }
     }
-
+    
     fn palindrome_checker_same(left:usize,mid:usize,right:usize,v_str:Vec<char>) -> String {
         let mut pos_left:usize = left;
         let mut pos_right:usize = right;
@@ -75,7 +75,10 @@ impl Solution {
                     pos_right += 1;
                 }
             }
+
+            // out of range
             if (v_str.get(pos_left) != v_str.get(pos) || v_str.get(pos_right) != v_str.get(pos)) || (pos_left == limit_left && pos_right == limit_right) {
+                
                 // check here
                 if v_str.get(pos_left) != v_str.get(pos){
                     pos_left +=1;
@@ -83,9 +86,12 @@ impl Solution {
                 if v_str.get(pos_right) != v_str.get(pos){
                     pos_right -=1;
                 }
-                if (v_str.get(pos_left-1) == v_str.get(pos_right+1)) && (v_str.get(pos) != v_str.get(pos_left-1)) {
-                    pos_left -=1;
-                    pos_right +=1;
+                 
+                if pos_left > limit_left && pos_right < limit_right {
+                    if (v_str.get(pos_left-1) == v_str.get(pos_right+1)) && (v_str.get(pos) != v_str.get(pos_left-1)) {
+                        pos_left -=1;
+                        pos_right +=1;
+                    }
                 }
                 return Solution::vec_get(pos_left, pos_right, v_str);
             }
