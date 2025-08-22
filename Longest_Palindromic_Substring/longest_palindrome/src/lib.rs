@@ -110,16 +110,18 @@ impl Solution {
                     return Solution::vec_get(limit_left, pos_right, v_str);
                 }else if pos_right+1 == limit_right && v_str.get(limit_right) == v_str.get(pos_left){
                         return Solution::vec_get(limit_left, limit_right, v_str)
-                    
+                }else {
+                    return Solution::vec_get(limit_left, pos_right, v_str);
                 }
             }else if pos_left > limit_left && pos_right == limit_right {
                 if v_str.get(pos_left-1) != v_str.get(limit_right){
                     return Solution::vec_get(pos_left, limit_right, v_str);
                 }else if pos_left-1 == limit_left && pos_right == limit_right {
                     return  Solution::vec_get(limit_left, limit_right, v_str);
+                }else {
+                    return Solution::vec_get(pos_left, limit_right, v_str);
                 }
             }
-
 
         }
     }
