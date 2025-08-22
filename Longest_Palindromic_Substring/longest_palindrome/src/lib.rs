@@ -149,6 +149,7 @@ impl Solution {
         }
     }
 
+    //Big-O is n^2
     pub fn longest_palindrome(s: String) -> String {
 
         //handdle for silly case
