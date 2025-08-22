@@ -90,4 +90,13 @@ mod tests {
         assert_eq!(r,"aaaaa")
     }
 
+    #[test]
+    fn palindrome_checker12() {
+        let s: String = String::from("caaaaa");
+        let pos: usize = 4;
+        let r: String = Solution::palindrome_checker(s, pos);
+        assert_eq!(r,"aaa")
+    } 
+    
+
 }
